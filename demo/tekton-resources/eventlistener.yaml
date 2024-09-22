@@ -1,0 +1,10 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: github-builds-eventlistener
+  namespace: github-builds
+spec:
+  serviceAccountName: github-builds-dev-branch-serviceaccount
+  triggers:
+    - triggerRef: github-builds-dev-branch-trigger
+    #- triggerRef: github-builds-master-branch-trigger
