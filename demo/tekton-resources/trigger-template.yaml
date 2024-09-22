@@ -24,7 +24,7 @@ spec:
         - name: revision
           value: dev
         - name: pathInRepo
-          value: demo/pipeline.yaml
+          value: demo/tekton-resources/pipeline.yaml
       podTemplate:
         securityContext:
           fsGroup: 65532          
