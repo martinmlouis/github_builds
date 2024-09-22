@@ -31,7 +31,7 @@ spec:
       resolver: git
       params:
         - name: url
-          value: https://github.com/martinmlouis/github-builds.git
+          value: https://github.com/martinmlouis/github_builds.git
         - name: pathInRepo
           value: demo/tekton-resources/git-clone.yaml        
     params:
@@ -44,13 +44,13 @@ spec:
       workspace: shared-data
     - name: basic-auth
       workspace: git-credentials
-  #- name: import-resources
-  #  runAfter: ["fetch-github-repo"]
-  #  taskRef:
-  #    name: import-resources
-  #  workspaces:
-  #  - name: shared-data
-  #    workspace: shared-data
-  #  params:
-  #  - name: path 
-  #    value: "demo/tekton-resources"
+  - name: import-resources
+    runAfter: ["fetch-github-repo"]
+    taskRef:
+      name: import-resources
+    workspaces:
+    - name: shared-data
+      workspace: shared-data
+    params:
+    - name: path 
+      value: "demo/tekton-resources"
