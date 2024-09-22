@@ -24,7 +24,7 @@ spec:
         - name: revision
           value: dev
         - name: pathInRepo
-          value: demo/dev-pipeline.yaml
+          value: demo/pipeline.yaml
       podTemplate:
         securityContext:
           fsGroup: 65532          
