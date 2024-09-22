@@ -2,7 +2,7 @@ apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: github-builds-dev-branch-triggerbinding
-  namespce: github-builds
+  namespace: github-builds
 spec:
   params:
     - name: branch

@@ -5,18 +5,19 @@ metadata:
   namespace: github-builds
 spec:
   interceptors:
-    - ref:
+    - ref: 
         name: "cel"
       params:
-        - name: "filter"
-          value: 'body[ref].contains(dev) && body[repository][name] == github_builds && header.match(X-GitHub-Event, push)'            
-        - name: "overlays"
-          value:
-            - key: extensions.branch
-              expression: "body.ref.split('/')[2]"
-            - key: extensions.repo-url
-              expression: "body.repository.url"
+      - name: "filter"
+        value: "body.ref.contains('dev') && body.repository.name == 'github_builds'"
+      - name: "overlays"
+        value:
+          - key: branch
+            expression: "body.ref.split('/')[2]"
+          - key: repo-url
+            expression: "body.repository.url"
   bindings:
   - ref: github-builds-dev-branch-triggerbinding
   template:
     ref: github-builds-dev-branch-triggertemplate
+
