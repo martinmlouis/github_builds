@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1 # or tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: import-resources
+  namespace: github-builds
+spec:
+  params:
+    - name: path
+      type: string
+      description: Github path where tekton resources are found
+  workspaces:
+    - name: shared-data
+  steps:
+    - name: list-tekton-resources
+      image: alpine:latest
+      script: |
+        #!/usr/bin/env sh
+        pwd
+        du -akh $(workspaces.shared-data.path)/$(params.path)
+    - name: import-tekton-resources
+      script: |
+        #!/usr/bin/env sh
+        kubectl apply -f $(workspaces.shared-data.path)/$(params.path) -n github-builds
+      image: lachlanevenson/k8s-kubectl:latest
+

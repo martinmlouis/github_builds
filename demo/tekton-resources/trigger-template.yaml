@@ -1,0 +1,51 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: github-builds-dev-branch-triggertemplate
+  namespace: github-builds
+spec:
+  params:
+  - name: branch
+    description: The git repository branch
+  - name: repo-url
+    description: The git repository url
+  resourcetemplates:
+  - apiVersion: tekton.dev/v1beta1
+    kind: PipelineRun
+    metadata:
+      generateName: github-builds-dev-pipeline-run-
+    spec:
+      serviceAccountName: github-builds-dev-branch-serviceaccount
+      pipelineRef:
+        resolver: git
+        params:
+        - name: url
+          value: https://github.com/martinmlouis/github_builds.git
+        - name: revision
+          value: dev
+        - name: pathInRepo
+          value: demo/dev-pipeline.yaml
+      podTemplate:
+        securityContext:
+          fsGroup: 65532          
+      params:
+      - name: repo-url
+        value: $(tt.params.repo-url)
+      - name: branch
+        value: $(tt.params.branch)
+      workspaces:
+      - name: shared-data
+        volumeClaimTemplate:
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 1Gi
+
+      - name: git-credentials
+        secret:
+          secretName: github-builds-secret
+      - name: harbor-access-secret
+        secret:
+          secretName: harbor-access-secret
