@@ -21,5 +21,5 @@ spec:
         while read version
         do
           echo $version
-        done < "${versions_to_build_helm_charts}"
+        done < "${versions_to_build_helm_charts_filename}"
 
