@@ -164,3 +164,25 @@ spec:
       workspace: harbor-access-secret
     - name: git-credentials
       workspace: git-credentials
+  - name: build-push-argocd-apps-helm
+    taskRef:
+      resolver: git
+      params:
+        - name: url
+          value: https://github.com/martinmlouis/github_builds.git
+        - name: pathInRepo
+          value: tekton-resources/build-push-argocd-apps-helm-task.yaml
+        - name: revision
+          value: $(params.branch)
+    params:
+    - name: URL
+      value: $(params.repo-url)            
+    - name: BRANCH
+      value: "$(params.branch)"
+    workspaces:
+    - name: harbor-access-secret
+      workspace: harbor-access-secret
+    - name: git-credentials
+      workspace: git-credentials
+    - name: shared-data
+      workspace: shared-data        
