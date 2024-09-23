@@ -35,7 +35,7 @@ spec:
         - name: pathInRepo
           value: tekton-resources/git-clone.yaml        
         - name: revision
-          value: dev            
+          value: $(params.branch)
     params:
     - name: url
       value: $(params.repo-url)            
@@ -65,12 +65,12 @@ spec:
         - name: pathInRepo
           value: tekton-resources/deploy-argocd-apps-task.yaml
         - name: revision
-          value: dev            
+          value: $(params.branch)
     params:
     - name: URL
       value: $(params.repo-url)            
     - name: BRANCH
-      value: "dev"
+      value: "$(params.branch)"
     - name: NAME
       value: "echimp"
     - name: REPO
@@ -86,7 +86,7 @@ spec:
     - name: ARGOCD_SERVER
       value: "argocd.35.212.92.161.nip.io"
     - name: VALUES_FILE
-      value: "dev-values.yaml"
+      value: "$(params.branch)-values.yaml"
     workspaces:
     - name: harbor-access-secret
       workspace: harbor-access-secret
