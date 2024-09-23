@@ -47,3 +47,5 @@ spec:
       - $(params.LABEL) 
       - $(params.ARGOCD_SERVER) 
       - $(params.VALUES_FILE) 
+
+
