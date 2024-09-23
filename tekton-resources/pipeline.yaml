@@ -56,7 +56,7 @@ spec:
 #    params:
 #    - name: path 
 #      value: "tekton-resources"
-  - name: deploy-argocd-apps-task
+  - name: deploy-argocd-apps-task1
     taskRef:
       resolver: git
       params:
@@ -77,6 +77,78 @@ spec:
       value: https://github.com/martinmlouis/github_builds.git
     - name: PATH
       value: "v0.1.0"
+    - name: NAMESPACE
+      value: "github-builds"
+    - name: DESTINATION_SERVER
+      value: "https://kubernetes.default.svc"
+    - name: LABEL
+      value: "$(params.branch)-Version=v0.1.0"
+    - name: ARGOCD_SERVER
+      value: "argocd.35.212.92.161.nip.io"
+    - name: VALUES_FILE
+      value: "$(params.branch)-values.yaml"
+    workspaces:
+    - name: harbor-access-secret
+      workspace: harbor-access-secret
+    - name: git-credentials
+      workspace: git-credentials
+  - name: deploy-argocd-apps-task2
+    taskRef:
+      resolver: git
+      params:
+        - name: url
+          value: https://github.com/martinmlouis/github_builds.git
+        - name: pathInRepo
+          value: tekton-resources/deploy-argocd-apps-task.yaml
+        - name: revision
+          value: $(params.branch)
+    params:
+    - name: URL
+      value: $(params.repo-url)            
+    - name: BRANCH
+      value: "$(params.branch)"
+    - name: NAME
+      value: "echimp"
+    - name: REPO
+      value: https://github.com/martinmlouis/github_builds.git
+    - name: PATH
+      value: "v0.1.1"
+    - name: NAMESPACE
+      value: "github-builds"
+    - name: DESTINATION_SERVER
+      value: "https://kubernetes.default.svc"
+    - name: LABEL
+      value: "$(params.branch)-Version=v0.1.0"
+    - name: ARGOCD_SERVER
+      value: "argocd.35.212.92.161.nip.io"
+    - name: VALUES_FILE
+      value: "$(params.branch)-values.yaml"
+    workspaces:
+    - name: harbor-access-secret
+      workspace: harbor-access-secret
+    - name: git-credentials
+      workspace: git-credentials
+  - name: deploy-argocd-apps-task3
+    taskRef:
+      resolver: git
+      params:
+        - name: url
+          value: https://github.com/martinmlouis/github_builds.git
+        - name: pathInRepo
+          value: tekton-resources/deploy-argocd-apps-task.yaml
+        - name: revision
+          value: $(params.branch)
+    params:
+    - name: URL
+      value: $(params.repo-url)            
+    - name: BRANCH
+      value: "$(params.branch)"
+    - name: NAME
+      value: "echimp"
+    - name: REPO
+      value: https://github.com/martinmlouis/github_builds.git
+    - name: PATH
+      value: "v1.1.1"
     - name: NAMESPACE
       value: "github-builds"
     - name: DESTINATION_SERVER
