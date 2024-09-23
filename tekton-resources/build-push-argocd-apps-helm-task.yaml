@@ -6,6 +6,7 @@ spec:
   workspaces:
     - name: harbor-access-secret
     - name: shared-data
+    - name: git-credentials
   steps:
     - name: read
       image: harbor.35.212.92.161.nip.io/leidos/helm:3.16.1
