@@ -82,7 +82,7 @@ spec:
     - name: DESTINATION_SERVER
       value: "https://kubernetes.default.svc"
     - name: LABEL
-      value: "DEV Version=v0.1.0"
+      value: "$(params.branch) Version=v0.1.0"
     - name: ARGOCD_SERVER
       value: "argocd.35.212.92.161.nip.io"
     - name: VALUES_FILE
