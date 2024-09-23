@@ -70,7 +70,7 @@ spec:
     - name: branch
       value: "dev"
     - name: NAME
-      value: "eCHIMP-v0.1.0"
+      value: "eCHIMP"
     - name: REPO
       value: https://github.com/martinmlouis/nginx.git
     - name: PATH
