@@ -36,17 +36,14 @@ spec:
     - name: deploy-argocd-apps-task
       image: harbor.35.212.92.161.nip.io/leidos/argocd:1.16.0
       imagePullPolicy: Always
-      script: |
-        #!/usr/bin/env bash
-        pwd
-        ls -l /usr/local/bin
-        
-        deploy_argocd_apps_git.bash \
-        $(params.NAME) \
-        $(params.REPO) \
-        $(params.PATH) \
-        $(params.NAMESPACE) \
-        $(params.DESTINATION_SERVER) \
-        $(params.LABEL) \
-        $(params.ARGOCD_SERVER) \
-        $(params.VALUES_FILE) \
+      command:
+      -  deploy_argocd_apps_git.bash 
+      params:
+      - $(params.NAME) 
+      - $(params.REPO) 
+      - $(params.PATH) 
+      - $(params.NAMESPACE) 
+      - $(params.DESTINATION_SERVER) 
+      - $(params.LABEL) 
+      - $(params.ARGOCD_SERVER) 
+      - $(params.VALUES_FILE) 
