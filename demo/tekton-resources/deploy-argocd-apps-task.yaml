@@ -35,14 +35,15 @@ spec:
   steps:
     - name: deploy-argocd-apps-task
       image: harbor.35.212.92.161.nip.io/leidos/argocd:1.16.0
-      command:
-      -  /usr/local/bin/deploy_argocd_apps_git.bash 
-      args:
-      - $(params.NAME) 
-      - $(params.REPO) 
-      - $(params.PATH) 
-      - $(params.NAMESPACE) 
-      - $(params.DESTINATION_SERVER) 
-      - $(params.LABEL) 
-      - $(params.ARGOCD_SERVER) 
-      - $(params.VALUES_FILE)
+      script: |
+        #!/bin/bash
+        
+        /usr/local/bin/deploy_argocd_apps_git.bash \
+        $(params.NAME) 
+        $(params.REPO) 
+        $(params.PATH) 
+        $(params.NAMESPACE) 
+        $(params.DESTINATION_SERVER) 
+        $(params.LABEL) 
+        $(params.ARGOCD_SERVER) 
+        $(params.VALUES_FILE)
