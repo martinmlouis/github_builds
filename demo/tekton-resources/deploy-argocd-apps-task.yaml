@@ -38,7 +38,7 @@ spec:
       imagePullPolicy: Always
       command:
       -  deploy_argocd_apps_git.bash 
-      params:
+      args:
       - $(params.NAME) 
       - $(params.REPO) 
       - $(params.PATH) 
