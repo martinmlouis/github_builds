@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1 # or tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: deploy_argocd_apps_task
+  name: deploy-argocd-apps-task
 spec:
   params:
     - name: NAME

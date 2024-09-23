@@ -54,7 +54,7 @@ spec:
 #    params:
 #    - name: path 
 #      value: "demo/tekton-resources"
-  - name: deploy_argocd_apps_task
+  - name: deploy-argocd-apps-task
     taskRef:
       resolver: git
       params:
