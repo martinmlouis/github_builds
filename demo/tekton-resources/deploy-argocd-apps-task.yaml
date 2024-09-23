@@ -35,15 +35,13 @@ spec:
   steps:
     - name: deploy-argocd-apps-task
       image: harbor.35.212.92.161.nip.io/leidos/argocd:1.16.0
-      script: |
-        #!/usr/bin/env sh
-
-        # Create a ArgoCd app from git
-        /usr/local/bin/deploy_argocd_apps_git.bash $(params.NAME) \
-          $(params.REPO) \
-          $(params.PATH) \
-          $(params.NAMESPACE) \
-          $(params.DESTINATION_SERVER) \
-          $(params.LABEL) \
-          $(params.ARGOCD_SERVER) \
-          $(params.VALUES_FILE)
+      command:
+      -  deploy_argocd_apps_git.bash $(params.NAME) 
+      args:
+      - $(params.REPO) 
+      - $(params.PATH) 
+      - $(params.NAMESPACE) 
+      - $(params.DESTINATION_SERVER) 
+      - $(params.LABEL) 
+      - $(params.ARGOCD_SERVER) 
+      - $(params.VALUES_FILE)
