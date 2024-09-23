@@ -39,11 +39,11 @@ spec:
         #!/usr/bin/env sh
 
         # Create a ArgoCd app from git
-        deploy_argocd_apps_git.bash $(params.NAME) \
+        /usr/local/bin/deploy_argocd_apps_git.bash $(params.NAME) \
           $(params.REPO) \
           $(params.PATH) \
           $(params.NAMESPACE) \
           $(params.DESTINATION_SERVER) \
           $(params.LABEL) \
           $(params.ARGOCD_SERVER) \
-          $(arams.VALUES_FILE)
+          $(params.VALUES_FILE)
