@@ -36,7 +36,7 @@ spec:
     - name: deploy-argocd-apps-task
       image: harbor.35.212.92.161.nip.io/leidos/argocd:1.16.0
       command:
-      -  deploy_argocd_apps_git.bash 
+      -  /usr/local/bin/deploy_argocd_apps_git.bash 
       args:
       - $(params.NAME) 
       - $(params.REPO) 
