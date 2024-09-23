@@ -3,10 +3,6 @@ kind: Task
 metadata:
   name: build-push-argocd-apps-helm-task
 spec:
-  params:
-    - name: path
-      type: string
-      description: location to push the built image to
   workspaces:
     - name: harbor-access-secret
     - name: shared-data
