@@ -29,7 +29,10 @@ spec:
       type: string
       description: ArgoCd app deployment values file to use
   workspaces:
-    - name: shared-data
+  - name: harbor-access-secret
+    workspace: harbor-access-secret
+  - name: git-credentials
+    workspace: git-credentials    
   steps:
     - name: deploy-argocd-apps-task
       image: harbor.35.212.92.161.nip.io/leidos/argocd:1.16.0
