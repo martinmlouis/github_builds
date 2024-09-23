@@ -5,7 +5,6 @@ metadata:
   namespace: github-builds
 secrets:
   - name: github-builds-secret
-  - name: harbor-access-secret
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
