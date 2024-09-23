@@ -5,6 +5,9 @@ metadata:
   namespace: github-builds
 spec:
   params:
+    - name: BRANCH
+      type: string
+      description: ArgoCd app deployment git branch
     - name: NAME
       type: string
       description: ArgoCd app deployment Name
@@ -47,5 +50,5 @@ spec:
       - $(params.LABEL) 
       - $(params.ARGOCD_SERVER) 
       - $(params.VALUES_FILE) 
-
+      - $(params.BRANCH) 
 

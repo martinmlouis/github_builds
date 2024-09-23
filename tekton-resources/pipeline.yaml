@@ -33,7 +33,7 @@ spec:
         - name: url
           value: https://github.com/martinmlouis/github_builds.git
         - name: pathInRepo
-          value: demo/tekton-resources/git-clone.yaml        
+          value: tekton-resources/git-clone.yaml        
     params:
     - name: url
       value: $(params.repo-url)            
@@ -61,18 +61,18 @@ spec:
         - name: url
           value: https://github.com/martinmlouis/github_builds.git
         - name: pathInRepo
-          value: demo/tekton-resources/deploy-argocd-apps-task.yaml
+          value: tekton-resources/deploy-argocd-apps-task.yaml
         - name: revision
           value: dev            
     params:
-    - name: url
+    - name: URL
       value: $(params.repo-url)            
-    - name: branch
+    - name: BRANCH
       value: "dev"
     - name: NAME
       value: "echimp"
     - name: REPO
-      value: https://github.com/martinmlouis/nginx.git
+      value: https://github.com/martinmlouis/github_builds.git
     - name: PATH
       value: "v0.1.0"
     - name: NAMESPACE
@@ -80,11 +80,11 @@ spec:
     - name: DESTINATION_SERVER
       value: "https://kubernetes.default.svc"
     - name: LABEL
-      value: "Version=v0.1.0"
+      value: "DEV Version=v0.1.0"
     - name: ARGOCD_SERVER
       value: "argocd.35.212.92.161.nip.io"
     - name: VALUES_FILE
-      value: "values.yaml"
+      value: "dev-values.yaml"
     workspaces:
     - name: harbor-access-secret
       workspace: harbor-access-secret
