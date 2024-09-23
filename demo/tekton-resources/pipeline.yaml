@@ -61,7 +61,7 @@ spec:
         - name: url
           value: https://github.com/martinmlouis/github_builds.git
         - name: pathInRepo
-          value: demo/tekton-resources/deploy_argocd_apps_task.yaml
+          value: demo/tekton-resources/deploy-argocd-apps-task.yaml
     params:
     - name: url
       value: $(params.repo-url)            
