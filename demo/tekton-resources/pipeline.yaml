@@ -76,7 +76,7 @@ spec:
     - name: PATH
       value: "v0.1.0"
     - name: NAMESPACE
-      value: "github_builds"
+      value: "github-builds"
     - name: DESTINATION_SERVER
       value: "https://kubernetes.default.svc"
     - name: LABEL
