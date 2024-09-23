@@ -31,7 +31,7 @@ spec:
   workspaces:
     - name: shared-data
   steps:
-    - name: deploy_argocd_apps_task
+    - name: deploy-argocd-apps-task
       image: harbor.35.212.92.161.nip.io/leidos/argocd:1.16.0
       script: |
         #!/usr/bin/env sh
