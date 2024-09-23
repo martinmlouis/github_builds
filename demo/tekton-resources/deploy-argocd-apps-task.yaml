@@ -38,12 +38,12 @@ spec:
       script: |
         #!/bin/bash
         
-        /usr/local/bin/deploy_argocd_apps_git.bash \
-        $(params.NAME) 
-        $(params.REPO) 
-        $(params.PATH) 
-        $(params.NAMESPACE) 
-        $(params.DESTINATION_SERVER) 
-        $(params.LABEL) 
-        $(params.ARGOCD_SERVER) 
-        $(params.VALUES_FILE)
+        deploy_argocd_apps_git.bash \
+        $(params.NAME) \
+        $(params.REPO) \
+        $(params.PATH) \
+        $(params.NAMESPACE) \
+        $(params.DESTINATION_SERVER) \
+        $(params.LABEL) \
+        $(params.ARGOCD_SERVER) \
+        $(params.VALUES_FILE) \
