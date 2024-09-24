@@ -12,7 +12,7 @@ argocd:
 replicaCount: 1
 
 image:
-  repository: "harbor.35.212.92.161.nip.io/leidos/argocd
+  repository: "harbor.35.212.92.161.nip.io/leidos/argocd"
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
