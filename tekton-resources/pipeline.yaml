@@ -72,7 +72,7 @@ spec:
     - name: BRANCH
       value: "$(params.branch)"
     - name: NAME
-      value: "echimp-v0.1.0)"
+      value: "echimpv0.1.0)"
     - name: REPO
       value: https://github.com/martinmlouis/github_builds.git
     - name: PATH
