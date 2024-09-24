@@ -60,3 +60,34 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{/*
+Define ArgoCD values
+*/}}
+{{- define "nginx.NAME" -}}
+{{- .Chart.Name | quote }}
+{{- end }}
+
+{{- define "nginx.REPO" -}}
+{{- .Values.argocd.REPO | quote }}
+{{- end }}
+
+{{- define "nginx.REVISION" -}}
+{{- .Chart.Version | quote }}
+{{- end }}
+
+{{- define "nginx.NAMESPACE" -}}
+{{- .Values.argocd.NAMESPACE | quote }}
+{{- end }}
+
+{{- define "nginx.DESTINATION_SERVER" -}}
+{{- .Values.argocd.DESTINATION_SERVER | quote }}
+{{- end }}
+
+{{- define "nginx.LABEL" -}}
+{{- printf "Version=v%s" .Chart.Version | quote }}
+{{- end }}
+
+{{- define "nginx.ARGOCD_SERVER" -}}
+{{- .Values.argocd.ARGOCD_SERVER | quote }}
+{{- end }}
