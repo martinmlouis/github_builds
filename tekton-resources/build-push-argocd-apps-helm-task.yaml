@@ -27,7 +27,7 @@ spec:
           helm package ${version}
           chart_version=$(echo ${version} |cut -d"v" -f2)
           echo ${chart_version}
-          chart_name=$(grep name ${version}/Chart.yaml |cut -d" " -f2)
+          chart_name=$(grep 'name:' ${version}/Chart.yaml |cut -d" " -f2)
           curl -k -XDELETE   http:/chartmuseum.35.212.92.161.nip.io/api/charts/${chart_name}/${chart_version}
           curl -k  --data-binary "@${chart_name}-${chart_version}.tgz" http:/chartmuseum.35.212.92.161.nip.io/api/charts
         done < "${versions_to_build_helm_charts_filename}"
