@@ -135,9 +135,5 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Create the name of the service account to use
 */}}
 {{- define "argocdcli.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "argocdcli.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
+{{- printf "argocdcli" | quote }}
 {{- end }}
