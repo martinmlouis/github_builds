@@ -30,23 +30,12 @@ spec:
       serviceAccountName: {{ include "nginx.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      restartPolicy: "Always"
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command:
-            - "deploy_argocd_apps.bash"
-          args:
-            - {{ include "nginx.NAME" . }}
-            - {{ include "nginx.REPO" . }}
-            - {{ include "nginx.REVISION" . }}
-            - {{ include "nginx.NAMESPACE" . }}
-            - {{ include "nginx.DESTINATION_SERVER" . }}
-            - {{ include "nginx.LABEL" . }}
-            - {{ include "nginx.ARGOCD_SERVER" . }}                        
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
