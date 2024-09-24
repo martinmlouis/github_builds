@@ -86,7 +86,8 @@ spec:
     - name: ARGOCD_SERVER
       value: "argocd.35.212.92.161.nip.io"
     - name: VALUES_FILE
-      value: "$(params.branch)-values.yaml"
+      #value: "$(params.branch)-values.yaml"
+      value: "dev-values.yaml"
     workspaces:
     - name: harbor-access-secret
       workspace: harbor-access-secret
@@ -122,7 +123,7 @@ spec:
     - name: ARGOCD_SERVER
       value: "argocd.35.212.92.161.nip.io"
     - name: VALUES_FILE
-      value: "$(params.branch)-values.yaml"
+      value: "test-values.yaml"
     workspaces:
     - name: harbor-access-secret
       workspace: harbor-access-secret
@@ -158,7 +159,7 @@ spec:
     - name: ARGOCD_SERVER
       value: "argocd.35.212.92.161.nip.io"
     - name: VALUES_FILE
-      value: "$(params.branch)-values.yaml"
+      value: "impl-values.yaml"
     workspaces:
     - name: harbor-access-secret
       workspace: harbor-access-secret
