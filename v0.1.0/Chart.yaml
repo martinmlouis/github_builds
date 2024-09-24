@@ -28,7 +28,6 @@ appVersion: 1.16.0
 home: https://bitnami.com
 icon: https://bitnami.com/assets/stacks/nginx/img/nginx-stack-220x234.png
 keywords:
-- nginx
 - http
 - https
 - www
