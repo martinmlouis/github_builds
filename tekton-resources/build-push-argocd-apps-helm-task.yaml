@@ -12,8 +12,9 @@ spec:
       image: harbor.35.212.92.161.nip.io/leidos/helm:3.16.1
       script: |
         #!/usr/bin/env bash
-        pwd
+        #pwd
         ls -ltr $(workspaces.shared-data.path)
+        cd $(workspaces.shared-data.path)
         ls |grep v > versions_to_build_helm_charts.txt
         versions_to_build_helm_charts_filename="versions_to_build_helm_charts.txt"
 
