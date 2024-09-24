@@ -14,7 +14,6 @@ spec:
         #!/usr/bin/env bash
         pwd
         ls -ltr $(workspaces.shared-data.path)
-        cd $(workspaces.shared-data.path)
         ls |grep v > versions_to_build_helm_charts.txt
         versions_to_build_helm_charts_filename="versions_to_build_helm_charts.txt"
 
