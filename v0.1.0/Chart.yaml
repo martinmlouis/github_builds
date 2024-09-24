@@ -1,8 +1,9 @@
+name: nginx
+
 annotations:
   category: Infrastructure
   licenses: Apache-2.0
 apiVersion: v2
-name: nginx
 description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
