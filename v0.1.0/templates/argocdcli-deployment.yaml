@@ -37,7 +37,7 @@ spec:
           image: {{ include "argocdcli.IMAGENAME" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: 
-            - "deploy_argocd_apps.bash"
+            - "deploy_argocd_apps_helm.bash"
           args:
             - {{ include "argocdcli.NAME" . }}
             - {{ include "argocdcli.REPO" . }}
