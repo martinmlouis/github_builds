@@ -165,6 +165,7 @@ spec:
     - name: git-credentials
       workspace: git-credentials
   - name: build-push-argocd-apps-helm
+    runAfter: ["fetch-github-repo"]
     taskRef:
       resolver: git
       params:
