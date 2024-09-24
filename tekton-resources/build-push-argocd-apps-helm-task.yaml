@@ -12,14 +12,22 @@ spec:
       image: harbor.35.212.92.161.nip.io/leidos/helm:3.16.1
       script: |
         #!/usr/bin/env bash
+        
+        set -x
         #pwd
         ls -ltr $(workspaces.shared-data.path)
         cd $(workspaces.shared-data.path)
         ls |grep v > versions_to_build_helm_charts.txt
         versions_to_build_helm_charts_filename="versions_to_build_helm_charts.txt"
-
         while read version
         do
           echo $version
+          helm lint ${version}
+          helm template ${version}
+          helm package ${version}
+          $chart_version = $(echo v0.1.0 |cut -d"v" -f2)
+          echo ${chart_version}
+          curl -k -XDELETE   https:/chartmuseum.35.212.92.161.nip.io/api/charts/${version}/${chart_version}
+          curl -k  --data-binary "@${version}-${chart_version}.tgz" https:/chartmuseum.35.212.92.161.nip.io/api/charts
         done < "${versions_to_build_helm_charts_filename}"
 
