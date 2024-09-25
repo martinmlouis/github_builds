@@ -9,7 +9,7 @@ argocd:
   DESTINATION_SERVER: "https://kubernetes.default.svc"
   ARGOCD_SERVER: "argocd-dev.35.212.92.161.nip.io"
 
-replicaCount: 3
+replicaCount: 1
 
 image:
   repository: nginx
