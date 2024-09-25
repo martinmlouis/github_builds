@@ -84,7 +84,7 @@ spec:
     - name: LABEL
       value: "$(params.branch)-Version=v0.1.0"
     - name: ARGOCD_SERVER
-      value: "argocd.35.212.92.161.nip.io"
+      value: "argocd-dev.35.212.92.161.nip.io"
     - name: VALUES_FILE
       #value: "$(params.branch)-values.yaml"
       value: "dev-values.yaml"
@@ -121,7 +121,7 @@ spec:
     - name: LABEL
       value: "$(params.branch)-Version=v0.1.1"
     - name: ARGOCD_SERVER
-      value: "argocd.35.212.92.161.nip.io"
+      value: "argocd-dev.35.212.92.161.nip.io"
     - name: VALUES_FILE
       value: "test-values.yaml"
     workspaces:
@@ -157,7 +157,7 @@ spec:
     - name: LABEL
       value: "$(params.branch)-Version=v1.1.1"
     - name: ARGOCD_SERVER
-      value: "argocd.35.212.92.161.nip.io"
+      value: "argocd-dev.35.212.92.161.nip.io"
     - name: VALUES_FILE
       value: "impl-values.yaml"
     workspaces:
