@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: github-builds-dev-branch-pipeline
+  name: github-builds-dev-branch-pipeline-test
   namespace: github-builds
 spec:
   description: | 
@@ -88,6 +88,78 @@ spec:
     - name: VALUES_FILE
       #value: "$(params.branch)-values.yaml"
       value: "dev-values.yaml"
+    workspaces:
+    - name: harbor-access-secret
+      workspace: harbor-access-secret
+    - name: git-credentials
+      workspace: git-credentials
+  - name: deploy-argocd-apps-task2
+    taskRef:
+      resolver: git
+      params:
+        - name: url
+          value: https://github.com/martinmlouis/github_builds.git
+        - name: pathInRepo
+          value: tekton-resources/deploy-argocd-apps-task.yaml
+        - name: revision
+          value: $(params.branch)
+    params:
+    - name: URL
+      value: $(params.repo-url)            
+    - name: BRANCH
+      value: "$(params.branch)"
+    - name: NAME
+      value: "echimp-test"
+    - name: REPO
+      value: https://github.com/martinmlouis/github_builds.git
+    - name: PATH
+      value: "v0.1.1"
+    - name: NAMESPACE
+      value: "github-builds"
+    - name: DESTINATION_SERVER
+      value: "https://kubernetes.default.svc"
+    - name: LABEL
+      value: "$(params.branch)-Version=v0.1.1"
+    - name: ARGOCD_SERVER
+      value: "argocd-dev.35.212.92.161.nip.io"
+    - name: VALUES_FILE
+      value: "test-values.yaml"
+    workspaces:
+    - name: harbor-access-secret
+      workspace: harbor-access-secret
+    - name: git-credentials
+      workspace: git-credentials
+  - name: deploy-argocd-apps-task3
+    taskRef:
+      resolver: git
+      params:
+        - name: url
+          value: https://github.com/martinmlouis/github_builds.git
+        - name: pathInRepo
+          value: tekton-resources/deploy-argocd-apps-task.yaml
+        - name: revision
+          value: $(params.branch)
+    params:
+    - name: URL
+      value: $(params.repo-url)            
+    - name: BRANCH
+      value: "$(params.branch)"
+    - name: NAME
+      value: "echimp-impl"
+    - name: REPO
+      value: https://github.com/martinmlouis/github_builds.git
+    - name: PATH
+      value: "v1.1.1"
+    - name: NAMESPACE
+      value: "github-builds"
+    - name: DESTINATION_SERVER
+      value: "https://kubernetes.default.svc"
+    - name: LABEL
+      value: "$(params.branch)-Version=v1.1.1"
+    - name: ARGOCD_SERVER
+      value: "argocd-dev.35.212.92.161.nip.io"
+    - name: VALUES_FILE
+      value: "impl-values.yaml"
     workspaces:
     - name: harbor-access-secret
       workspace: harbor-access-secret
