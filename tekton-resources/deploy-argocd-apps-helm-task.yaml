@@ -1,0 +1,53 @@
+apiVersion: tekton.dev/v1 # or tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-argocd-apps-task
+  namespace: github-builds
+spec:
+  params:
+    - name: BRANCH
+      type: string
+      description: ArgoCd app deployment git branch
+    - name: NAME
+      type: string
+      description: ArgoCd app deployment Name
+    - name: REPO
+      type: string
+      description: ArgoCd app deployment Repo
+    - name: PATH
+      type: string
+      description: ArgoCd app deployment gitrepo Path
+    - name: NAMESPACE
+      type: string
+      description: ArgoCd app deployment Namespace
+    - name: DESTINATION_SERVER
+      type: string
+      description: ArgoCd app deployment Cluster
+    - name: LABEL
+      type: string
+      description: ArgoCd app deployment Label
+    - name: ARGOCD_SERVER
+      type: string
+      description: ArgoCd app deployment ArgoCD Server 
+    - name: VALUES_FILE
+      type: string
+      description: ArgoCd app deployment values file to use
+  workspaces:
+  - name: harbor-access-secret
+  - name: git-credentials
+  steps:
+    - name: deploy-argocd-apps-task
+      image: harbor.35.212.92.161.nip.io/leidos/argocd:1.16.0
+      imagePullPolicy: Always
+      command:
+      -  deploy_argocd_apps_helm.bash
+      args:
+      - $(params.NAME) 
+      - $(params.REPO) 
+      - $(params.PATH) 
+      - $(params.NAMESPACE) 
+      - $(params.DESTINATION_SERVER) 
+      - $(params.LABEL) 
+      - $(params.ARGOCD_SERVER) 
+      - $(params.VALUES_FILE) 
+
