@@ -1,7 +1,6 @@
 # Default values for nginx.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-#
 # Create a Helm app from helmrepo
 argocd:
   REPO: "http://chartmuseum.35.212.92.161.nip.io"
@@ -12,7 +11,7 @@ argocd:
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: httpd
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
