@@ -11,6 +11,7 @@ A Helm chart for Kubernetes
 | Name | Email | Url |
 | ---- | ------ | --- |
 | Broadcom, Inc. All Rights Reserved. |  | <https://github.com/bitnami/charts> |
+| Leidos, Inc. All Rights Reserved. |  | <https://leidos.com> |
 
 ## Source Code
 
