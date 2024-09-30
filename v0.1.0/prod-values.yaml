@@ -6,7 +6,7 @@ argocd:
   REPO: "http://chartmuseum.35.212.92.161.nip.io"
   NAMESPACE: "cms"
   DESTINATION_SERVER: "https://kubernetes.default.svc"
-  ARGOCD_SERVER: "argocd-prod.35.212.92.161.nip.io"
+  ARGOCD_SERVER: "argocd-dev.35.212.92.161.nip.io"
 
 replicaCount: 1
 
