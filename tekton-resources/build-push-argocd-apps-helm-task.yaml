@@ -31,7 +31,7 @@ spec:
           curl -k -XDELETE   http:/chartmuseum.35.212.92.161.nip.io/api/charts/${chart_name}/${chart_version}
           curl -k  --data-binary "@${chart_name}-${chart_version}.tgz" http:/chartmuseum.35.212.92.161.nip.io/api/charts
           sleep 30
-           ${version}/dev-values.yaml ${version}/values.yaml
+          cp ${version}/dev-values.yaml ${version}/values.yaml
           curl -k -XDELETE   http:/chartmuseum-dev.35.212.92.161.nip.io/api/charts/${chart_name}/${chart_version}
           curl -k  --data-binary "@${chart_name}-${chart_version}.tgz" http:/chartmuseum-dev.35.212.92.161.nip.io/api/charts
         done < "${versions_to_build_helm_charts_filename}"
