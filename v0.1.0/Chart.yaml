@@ -1,9 +1,5 @@
-name: nginx
-
-annotations:
-  category: Infrastructure
-  licenses: Apache-2.0
 apiVersion: v2
+name: nginx
 description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
@@ -25,18 +21,4 @@ version: 0.1.0
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: 2.4.62
-#appVersion: 1.16.0
-home: https://bitnami.com
-icon: https://bitnami.com/assets/stacks/nginx/img/nginx-stack-220x234.png
-keywords:
-- http
-- https
-- www
-- web
-- reverse proxy
-maintainers:
-- name: Broadcom, Inc. All Rights Reserved.
-  url: https://github.com/bitnami/charts
-sources:
-- https://github.com/bitnami/charts/tree/main/bitnami/nginx
+appVersion: "1.16.0"
