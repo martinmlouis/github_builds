@@ -16,7 +16,7 @@ spec:
         set -x
         #pwd
         ls -ltr $(workspaces.shared-data.path)
-        cd $(workspaces.shared-data.path)
+        cd $(workspaces.shared-data.path)/charts
         ls |grep v[0-9] > versions_to_build_helm_charts.txt
         versions_to_build_helm_charts_filename="versions_to_build_helm_charts.txt"
         while read version
