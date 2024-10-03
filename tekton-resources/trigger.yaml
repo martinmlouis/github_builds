@@ -20,4 +20,28 @@ spec:
   - ref: github-builds-dev-branch-triggerbinding
   template:
     ref: github-builds-dev-branch-triggertemplate
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: Trigger
+metadata:
+  name: github-builds-echimp-deployments-trigger
+  namespace: github-builds
+spec:
+  interceptors:
+    - ref: 
+        name: "cel"
+      params:
+      - name: "filter"
+        value: "body.ref.contains('main') && body.repository.name == 'echimp'"
+      - name: "overlays"
+        value:
+          - key: branch
+            expression: "body.ref.split('/')[2]"
+          - key: repo-url
+            expression: "body.repository.url"
+  bindings:
+  - ref: github-builds-dev-branch-triggerbinding
+  template:
+    ref: github-builds-dev-branch-triggertemplate
+---
 

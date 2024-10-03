@@ -7,4 +7,5 @@ spec:
   serviceAccountName: github-builds-dev-branch-serviceaccount
   triggers:
     - triggerRef: github-builds-dev-branch-trigger
+    - triggerRef: github-builds-echimp-deployments-trigger
     #- triggerRef: github-builds-master-branch-trigger
