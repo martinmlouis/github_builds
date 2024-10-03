@@ -34,5 +34,17 @@ spec:
           cp ${version}/dev-values.yaml ${version}/values.yaml
           curl -k -XDELETE   http:/chartmuseum-dev.35.212.92.161.nip.io/api/charts/${chart_name}/${chart_version}
           curl -k  --data-binary "@${chart_name}-${chart_version}.tgz" http:/chartmuseum-dev.35.212.92.161.nip.io/api/charts
+          sleep 30
+          cp ${version}/test-values.yaml ${version}/values.yaml
+          curl -k -XDELETE   http:/chartmuseum-test.35.212.92.161.nip.io/api/charts/${chart_name}/${chart_version}
+          curl -k  --data-binary "@${chart_name}-${chart_version}.tgz" http:/chartmuseum-test.35.212.92.161.nip.io/api/charts
+          sleep 30
+          cp ${version}/impl-values.yaml ${version}/values.yaml
+          curl -k -XDELETE   http:/chartmuseum-impl.35.212.92.161.nip.io/api/charts/${chart_name}/${chart_version}
+          curl -k  --data-binary "@${chart_name}-${chart_version}.tgz" http:/chartmuseum-impl.35.212.92.161.nip.io/api/charts
+          sleep 30
+          cp ${version}/prod-values.yaml ${version}/values.yaml
+          curl -k -XDELETE   http:/chartmuseum-prod.35.212.92.161.nip.io/api/charts/${chart_name}/${chart_version}
+          curl -k  --data-binary "@${chart_name}-${chart_version}.tgz" http:/chartmuseum-prod.35.212.92.161.nip.io/api/charts
         done < "${versions_to_build_helm_charts_filename}"
 
